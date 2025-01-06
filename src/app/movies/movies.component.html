@@ -1,0 +1,41 @@
+<div *ngIf="authService.isLoggedIn()">
+  <nav>
+    <a routerLink="/movies"></a>
+    <a routerLink="/login" (click)="authService.logout()"></a>
+  </nav>
+
+  <h1 class="centered-text">Lista filmova</h1>
+
+  <!-- Pretraga po naslovu -->
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchQuery" (input)="filterMoviesByTitle()" placeholder="Pretraži filmove po naslovu" />
+  </div>
+
+  <!-- Sortiranje i filtriranje -->
+  <div class="sort-options">
+    <button class="sort-button" (click)="toggleSortOptions()">
+      Sortiraj <span class="icon">&#8595;</span>
+    </button>
+    <div *ngIf="showSortOptions" class="sort-dropdown">
+      <button class="dropdown-item" (click)="sortByGenre()">Po žanrovima</button>
+      <button class="dropdown-item" (click)="sortByReleaseDate()">Po datumu izlaska</button>
+    </div>
+  
+    <div class="calendar-container">
+      <label for="releaseDate">Izaberi datum izlaska:</label>
+      <input type="date" id="releaseDate" (change)="filterByDate($event)" />
+    </div>
+  </div>
+  
+  <div class="movie-cards">
+    <div *ngFor="let movie of filteredMovies" class="movie-card">
+      <h3>{{ movie.title }}</h3>
+      <p><strong>Žanr:</strong> {{ movie.genre }}</p>
+      <button (click)="toggleDescription(movie)">
+        {{ movie.showDescription ? "Sakrij opis" : "Pogledaj opis" }}
+      </button>
+      <p *ngIf="movie.showDescription">{{ movie.description }}</p>
+    </div>
+  </div>
+</div>
+

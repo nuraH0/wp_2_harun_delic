@@ -1,0 +1,50 @@
+.navbar {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between; /* Razmak između elemenata */
+    align-items: center; /* Poravnavanje elemenata vertikalno u sredinu */
+    background-color: #0288d1;
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .navbar li {
+    margin-right: 20px;
+  }
+  
+  .navbar a, .navbar button {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navbar a:hover, .navbar button:hover {
+    background-color: #1565c0;
+    transform: scale(1.05);
+  }
+  
+
+.navbar button {
+  background-color: #0288d1; /* Plavi ton za dugme */
+}
+
+.navbar button:hover {
+  background-color: #0277bd; /* Tamnija nijansa plave na hover */
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar li {
+    margin-bottom: 10px;
+  }
+}

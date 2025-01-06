@@ -1,0 +1,19 @@
+<div *ngIf="isAdmin()">
+    <h2>Add Movie</h2>
+    <form (ngSubmit)="addMovie()">
+      <label for="title">Movie Title:</label>
+      <input type="text" id="title" [(ngModel)]="movie.title" name="title" required>
+  
+      <label for="genre">Genre:</label>
+      <input type="text" id="genre" [(ngModel)]="movie.genre" name="genre" required>
+  
+      <label for="releaseDate">Release Date:</label>
+      <input type="date" id="releaseDate" [(ngModel)]="movie.releaseDate" name="releaseDate" required>
+  
+      <label for="description">Description:</label>
+      <textarea id="description" [(ngModel)]="movie.description" name="description" required></textarea>
+  
+      <button type="submit">Add Movie</button>
+    </form>
+  </div>
+  

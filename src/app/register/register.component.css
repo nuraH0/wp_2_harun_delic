@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eaf6ff;  /* Svijetlo plava pozadina */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  div {
+    background-color: #cce7ff; /* Svijetlo plava pozadina forme */
+    color: #333;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Maksimalna širina forme */
+  }
+  
+  h2 {
+    text-align: center;
+    color: #4f86f7; /* Svijetlo plava boja za naslov */
+  }
+  
+  label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+    color: #6f8fd2; /* Svijetlo plavi tekst za oznake */
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #b3d4fc; /* Svijetlo plavi okvir */
+    border-radius: 4px;
+    background-color: #f1faff; /* Nijansa plave za pozadinu unosa */
+    color: #333;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4f86f7;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #3d75d7;
+  }
+  
+  p {
+    text-align: center;
+    font-size: 14px;
+    color: #ff4d4d;
+  }
+  

@@ -1,0 +1,56 @@
+.search-bar {
+  margin: 20px 0;
+  text-align: center;
+}
+
+
+.search-bar input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 300px;
+}
+
+.centered-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2em;
+  color: #4a90e2;
+}
+
+
+.movie-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.movie-card {
+  border: 1px solid #a3c9f1;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #e6f2ff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  background-color: #cfe9fc;
+}
+
+.movie-card h3 {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+  color: #4a90e2;
+}
+
+.movie-card p {
+  font-size: 1em;
+  color: #333;
+}
+
+.sort-options, .calendar-container {
+  margin-top: 20px;
+}
