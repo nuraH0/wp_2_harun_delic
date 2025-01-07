@@ -1,44 +1,42 @@
-/* Set background color for the whole page */
+
 body {
-    background-color: #e0f7fa; /* Light blue */
-    color: #00796b; /* Darker teal for text */
+    background-color: #e0f7fa; 
+    color: #1372ca; 
     font-family: Arial, sans-serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
   }
   
-  /* Header style */
+ 
   header {
-    background-color: #80deea; /* Soft light blue */
-    color: #004d40; /* Dark teal text */
+    background-color: #80deea;
+    color: #004d40;
     padding: 20px;
     text-align: center;
   }
   
-  /* Footer style */
-  footer {
-    background-color: #4dd0e1; /* Slightly darker blue */
-    color: white;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  /* Card styles */
+
   .movie-card {
-    background-color: #b2ebf2; /* Light blue */
-    border: 1px solid #00838f; /* Dark teal border */
+    background-color: #b2ebf2;
+    border: 1px solid #00838f; 
     padding: 16px;
     border-radius: 8px;
     transition: transform 0.3s ease;
   }
   
-  /* Hover effect */
+
   .movie-card:hover {
     transform: scale(1.05);
-    background-color: #81d4fa; /* Slightly darker blue on hover */
+    background-color: #81d4fa; 
   }
   
-  /* Button style */
+
   button {
-    background-color: #0288d1; /* Blue button */
+    background-color: #0288d1; 
     color: white;
     border: none;
     padding: 10px;
@@ -47,8 +45,32 @@ body {
   }
   
   button:hover {
-    background-color: #01579b; /* Darker blue on hover */
+    background-color: #01579b; 
   }
   
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.footer {
+  background-color: #333; 
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: auto; 
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #ddd; 
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #fff; 
+}

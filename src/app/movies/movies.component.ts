@@ -34,9 +34,11 @@ export class MoviesComponent {
     { title: 'City of God', description: 'In the slums of Rio, two kids\' lives...', genre: 'Crime, Drama', releaseDate: '2024-12-08', showDescription: false }
   ];
 
-  filteredMovies = [...this.movies]; // Inicijalno prikazuje sve filmove
-  searchQuery = ''; // Pretraga po naslovu
+  filteredMovies = [...this.movies];
+  searchQuery = '';
   showSortOptions = false;
+  isModalOpen = false;
+  newMovie = { title: '', genre: '', releaseDate: '', description: '' };
 
   constructor(public authService: AuthService) {}
 
@@ -72,7 +74,30 @@ export class MoviesComponent {
         movie.title.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     } else {
-      this.filteredMovies = [...this.movies]; // Vraća sve filmove ako je pretraga prazna
+      this.filteredMovies = [...this.movies];
     }
   }
+
+  removeMovie(movie: any): void {
+    const confirmed = window.confirm(`Da li ste sigurni da želite obrisati film "${movie.title}"?`);
+    if (confirmed) {
+      this.filteredMovies = this.filteredMovies.filter(m => m !== movie);
+      alert(`Film "${movie.title}" je obrisan.`);
+    }
+  }
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  addMovie() {
+    this.movies.push({ ...this.newMovie, showDescription: false });
+    this.filteredMovies = [...this.movies];  
+    this.closeModal();
+    alert(`Film "${this.newMovie.title}" je uspješno dodan.`);
+  }  
 }

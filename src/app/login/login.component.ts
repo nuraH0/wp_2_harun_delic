@@ -21,7 +21,7 @@ export class LoginComponent {
   login() {
     if (this.authService.login(this.username, this.password)) {
       this.errorMessage = '';
-      this.router.navigate(['/movies']); // Redirekcija na Movies
+      this.router.navigate(['/movies']); 
     } else {
       this.errorMessage = 'Invalid username or password';
     }

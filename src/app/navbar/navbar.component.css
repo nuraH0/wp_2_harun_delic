@@ -1,10 +1,11 @@
 .navbar {
     list-style-type: none;
     display: flex;
-    justify-content: space-between; /* Razmak između elemenata */
-    align-items: center; /* Poravnavanje elemenata vertikalno u sredinu */
+    justify-content: space-between; 
+    align-items: center;
     background-color: #0288d1;
-    padding: 10px;
+    color: black;
+    padding: 14px;
     margin: 0;
   }
   
@@ -30,11 +31,11 @@
   
 
 .navbar button {
-  background-color: #0288d1; /* Plavi ton za dugme */
+  background-color: #0288d1; 
 }
 
 .navbar button:hover {
-  background-color: #0277bd; /* Tamnija nijansa plave na hover */
+  background-color: #0277bd; 
 }
 
 

@@ -34,9 +34,9 @@ body {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #b3d4fc; /* Svijetlo plavi okvir */
+    border: 1px solid #b3d4fc; 
     border-radius: 4px;
-    background-color: #f1faff; /* Nijansa plave za pozadinu unosa */
+    background-color: #f1faff; 
     color: #333;
   }
   

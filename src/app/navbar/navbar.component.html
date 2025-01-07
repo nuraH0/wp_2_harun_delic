@@ -1,7 +1,6 @@
 <nav *ngIf="isLoggedIn()">
   <ul class="navbar">
     <li><a routerLink="/movies">Movies</a></li>
-    <li *ngIf="isAdmin()"><a routerLink="/add-movie">Add Movie</a></li> 
     <li><button (click)="logout()">Logout</button></li>
   </ul>
 </nav>

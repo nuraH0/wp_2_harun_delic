@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 })
 export class AuthService {
   login(username: string, password: string): boolean {
-    // Proveri za admin korisnika
+ 
     if (username === 'admin' && password === '1234') {
       const adminUser = { username: 'admin', role: 'admin' };
       localStorage.setItem('isLoggedIn', 'true');
@@ -13,7 +13,7 @@ export class AuthService {
       return true;
     }
 
-    // Proveri za ostale korisnike
+   
     const users = JSON.parse(localStorage.getItem('users') || '[]');
     const user = users.find((user: any) => user.username === username && user.password === password);
 
@@ -22,12 +22,12 @@ export class AuthService {
       localStorage.setItem('userDetails', JSON.stringify(user));
       return true;
     }
-    return false; // Prijava neuspješna
+    return false; 
   }
 
   isAdmin(): boolean {
     const user = JSON.parse(localStorage.getItem('userDetails') || '{}');
-    return user.role === 'admin'; // Provjerava da li je korisnik admin
+    return user.role === 'admin'; 
   }
 
   logout(): void {

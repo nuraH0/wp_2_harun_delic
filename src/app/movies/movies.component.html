@@ -1,32 +1,24 @@
 <div *ngIf="authService.isLoggedIn()">
-  <nav>
-    <a routerLink="/movies"></a>
-    <a routerLink="/login" (click)="authService.logout()"></a>
-  </nav>
-
   <h1 class="centered-text">Lista filmova</h1>
 
-  <!-- Pretraga po naslovu -->
   <div class="search-bar">
     <input type="text" [(ngModel)]="searchQuery" (input)="filterMoviesByTitle()" placeholder="Pretraži filmove po naslovu" />
   </div>
 
-  <!-- Sortiranje i filtriranje -->
   <div class="sort-options">
-    <button class="sort-button" (click)="toggleSortOptions()">
-      Sortiraj <span class="icon">&#8595;</span>
-    </button>
+    <button class="sort-button" (click)="toggleSortOptions()">Sortiraj <span class="icon">&#8595;</span></button>
     <div *ngIf="showSortOptions" class="sort-dropdown">
       <button class="dropdown-item" (click)="sortByGenre()">Po žanrovima</button>
       <button class="dropdown-item" (click)="sortByReleaseDate()">Po datumu izlaska</button>
     </div>
-  
     <div class="calendar-container">
       <label for="releaseDate">Izaberi datum izlaska:</label>
       <input type="date" id="releaseDate" (change)="filterByDate($event)" />
     </div>
   </div>
-  
+
+  <button *ngIf="authService.isAdmin()" class="add-movie" (click)="openModal()">Dodaj film</button>
+
   <div class="movie-cards">
     <div *ngFor="let movie of filteredMovies" class="movie-card">
       <h3>{{ movie.title }}</h3>
@@ -35,7 +27,28 @@
         {{ movie.showDescription ? "Sakrij opis" : "Pogledaj opis" }}
       </button>
       <p *ngIf="movie.showDescription">{{ movie.description }}</p>
+
+      <button *ngIf="authService.isAdmin()" (click)="removeMovie(movie)">Ukloni</button>
+    </div>
+  </div>
+
+  <div *ngIf="isModalOpen" class="modal">
+    <div class="modal-content">
+      <h2>Dodaj Film</h2>
+      <label for="title">Naziv filma:</label>
+      <input type="text" [(ngModel)]="newMovie.title" id="title" />
+
+      <label for="genre">Žanr:</label>
+      <input type="text" [(ngModel)]="newMovie.genre" id="genre" />
+
+      <label for="releaseDate">Datum izlaska:</label>
+      <input type="date" [(ngModel)]="newMovie.releaseDate" id="releaseDate" />
+
+      <label for="description">Opis:</label>
+      <textarea [(ngModel)]="newMovie.description" id="description"></textarea>
+
+      <button (click)="addMovie()">Dodaj</button>
+      <button (click)="closeModal()">Zatvori</button>
     </div>
   </div>
 </div>
-
