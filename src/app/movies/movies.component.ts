@@ -43,8 +43,14 @@ export class MoviesComponent {
   constructor(public authService: AuthService) {}
 
   toggleDescription(movie: any) {
+    if (!movie.showDescription) {
+      movie.fullDescription = `${movie.description} Released on: ${movie.releaseDate}`;
+    } else {
+      movie.fullDescription = movie.description;
+    }
     movie.showDescription = !movie.showDescription;
   }
+  
 
   toggleSortOptions() {
     this.showSortOptions = !this.showSortOptions;
@@ -67,6 +73,7 @@ export class MoviesComponent {
       this.filteredMovies = [...this.movies];
     }
   }
+  
 
   filterMoviesByTitle() {
     if (this.searchQuery) {
@@ -81,10 +88,12 @@ export class MoviesComponent {
   removeMovie(movie: any): void {
     const confirmed = window.confirm(`Da li ste sigurni da želite obrisati film "${movie.title}"?`);
     if (confirmed) {
-      this.filteredMovies = this.filteredMovies.filter(m => m !== movie);
+      this.movies = this.movies.filter(m => m !== movie); 
+      this.filteredMovies = this.filteredMovies.filter(m => m !== movie); 
       alert(`Film "${movie.title}" je obrisan.`);
     }
   }
+  
 
   openModal() {
     this.isModalOpen = true;

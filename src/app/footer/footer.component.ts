@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <footer class="footer">
-      <p>&copy; 2025 Tvoja Kompanija. Sva prava zadržana.</p>
+      <p>&copy; 2025 Ipi Akademija. Sva prava zadržana.</p>
       <p>Kontakt: Harun Delic | Telefon: 123-456-7890</p>
     </footer>
   `,

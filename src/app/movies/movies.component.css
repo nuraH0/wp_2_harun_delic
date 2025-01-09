@@ -1,8 +1,26 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Centered Text */
+.centered-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2em;
+  color: #4a90e2;
+}
+
+/* Search Bar */
 .search-bar {
   margin: 20px 0;
   text-align: center;
 }
-
 
 .search-bar input {
   padding: 10px;
@@ -12,18 +30,12 @@
   width: 300px;
 }
 
-.centered-text {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 2em;
-  color: #4a90e2;
-}
-
-
+/* Movie Cards */
 .movie-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+  margin-top: 50px;
 }
 
 .movie-card {
@@ -32,7 +44,7 @@
   border-radius: 8px;
   background-color: #e6f2ff;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .movie-card:hover {
@@ -51,10 +63,12 @@
   color: #333;
 }
 
+/* Sort Options & Calendar Container */
 .sort-options, .calendar-container {
   margin-top: 20px;
 }
 
+/* Modal */
 .modal {
   position: fixed;
   top: 0;
@@ -69,12 +83,12 @@
 
 .modal-content {
   background-color: white;
-  padding: 20px;
+  padding: 50px;
   border-radius: 10px;
   max-width: 400px;
   width: 100%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-  animation: fadeIn 0.3s ease-out; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-out;
 }
 
 @keyframes fadeIn {
@@ -88,22 +102,22 @@
   }
 }
 
+/* Buttons */
 button {
   cursor: pointer;
 }
 
 button.add-movie {
-  cursor: pointer;
   padding: 12px 18px;
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 8px; 
+  border-radius: 8px;
   font-size: 16px;
-  position: relative;
-  top: 20px; 
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   transition: background-color 0.3s, transform 0.3s ease;
+  position: relative;
+  top: 20px;
 }
 
 button.add-movie:hover {
@@ -118,12 +132,26 @@ button.add-movie::before {
 
 button.add-movie:focus {
   outline: none;
-  box-shadow: 0 0 5px rgba(72, 181, 97, 0.7); 
+  box-shadow: 0 0 5px rgba(72, 181, 97, 0.7);
 }
 
-.movie-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 50px; 
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .movie-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-bar input {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .movie-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    padding: 30px;
+  }
 }

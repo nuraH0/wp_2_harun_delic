@@ -35,20 +35,30 @@
   <div *ngIf="isModalOpen" class="modal">
     <div class="modal-content">
       <h2>Dodaj Film</h2>
-      <label for="title">Naziv filma:</label>
-      <input type="text" [(ngModel)]="newMovie.title" id="title" />
-
-      <label for="genre">Žanr:</label>
-      <input type="text" [(ngModel)]="newMovie.genre" id="genre" />
-
-      <label for="releaseDate">Datum izlaska:</label>
-      <input type="date" [(ngModel)]="newMovie.releaseDate" id="releaseDate" />
-
-      <label for="description">Opis:</label>
-      <textarea [(ngModel)]="newMovie.description" id="description"></textarea>
-
-      <button (click)="addMovie()">Dodaj</button>
-      <button (click)="closeModal()">Zatvori</button>
+      <div class="form-group">
+        <label for="title">Naziv filma:</label>
+        <input type="text" [(ngModel)]="newMovie.title" id="title" placeholder="Unesite naziv filma" />
+      </div>
+  
+      <div class="form-group">
+        <label for="genre">Žanr:</label>
+        <input type="text" [(ngModel)]="newMovie.genre" id="genre" placeholder="Unesite žanr filma" />
+      </div>
+  
+      <div class="form-group">
+        <label for="releaseDate">Datum izlaska:</label>
+        <input type="date" [(ngModel)]="newMovie.releaseDate" id="releaseDate" />
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Opis:</label>
+        <textarea [(ngModel)]="newMovie.description" id="description" placeholder="Unesite opis filma"></textarea>
+      </div>
+  
+      <div class="button-group">
+        <button (click)="addMovie()">Dodaj</button>
+        <button (click)="closeModal()">Zatvori</button>
+      </div>
     </div>
   </div>
-</div>
+  
