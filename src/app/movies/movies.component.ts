@@ -51,7 +51,6 @@ export class MoviesComponent {
     movie.showDescription = !movie.showDescription;
   }
   
-
   toggleSortOptions() {
     this.showSortOptions = !this.showSortOptions;
   }
