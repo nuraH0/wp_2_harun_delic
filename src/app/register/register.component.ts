@@ -33,8 +33,8 @@ export class RegisterComponent {
       this.errorMessage = 'All fields are required';
     }
   }
+
   goToLogin() {
     this.router.navigate(['/login']);
   }
-  
 }

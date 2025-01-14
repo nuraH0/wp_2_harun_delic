@@ -1,63 +1,76 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #eaf6ff;  /* Svijetlo plava pozadina */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  div {
-    background-color: #cce7ff; /* Svijetlo plava pozadina forme */
-    color: #333;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px; /* Maksimalna širina forme */
-  }
-  
-  h2 {
-    text-align: center;
-    color: #4f86f7; /* Svijetlo plava boja za naslov */
-  }
-  
-  label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    display: block;
-    color: #6f8fd2; /* Svijetlo plavi tekst za oznake */
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #b3d4fc; 
-    border-radius: 4px;
-    background-color: #f1faff; 
-    color: #333;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4f86f7;
-    border: none;
-    color: white;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #3d75d7;
-  }
-  
-  p {
-    text-align: center;
-    font-size: 14px;
-    color: #ff4d4d;
-  }
-  
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+
+/* Okvir za login formu */
+.login-container {
+  background-color: rgba(208, 226, 236, 0.9); /* Poluprozirna bijela pozadina */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);  /* Veća sjena oko okvira */
+  width: 100%;
+  max-width: 400px;
+  border: 2px solid #4f86f7;  /* Plavi okvir oko forme */
+  box-sizing: border-box;
+  margin-top: 200px;
+
+/* Stilovi za naslov */
+h2 {
+  text-align: center;
+  color: #4f86f7;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Stilovi za oznake (labels) */
+label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: block;
+  color: #6f8fd2;
+}
+
+/* Stilovi za inpute */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #b3d4fc;
+  border-radius: 4px;
+  background-color: #f1faff;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Stilovi za dugme */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4f86f7;
+  border: none;
+  color: white;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #3d75d7;
+}
+
+/* Stilovi za poruku (ako postoji) */
+p {
+  text-align: center;
+  font-size: 14px;
+  color: #ff4d4d;
+}
+}

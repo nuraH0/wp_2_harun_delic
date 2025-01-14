@@ -5,12 +5,17 @@
     <input type="text" [(ngModel)]="searchQuery" (input)="filterMoviesByTitle()" placeholder="Pretraži filmove po naslovu" />
   </div>
 
-  <div class="sort-options">
-    <button class="sort-button" (click)="toggleSortOptions()">Sortiraj <span class="icon">&#8595;</span></button>
-    <div *ngIf="showSortOptions" class="sort-dropdown">
-      <button class="dropdown-item" (click)="sortByGenre()">Po žanrovima</button>
-      <button class="dropdown-item" (click)="sortByReleaseDate()">Po datumu izlaska</button>
+  <div class="sort-options-container">
+    <!-- Sortiraj dugme na lijevoj strani -->
+    <div class="sort-options">
+      <button class="sort-button" (click)="toggleSortOptions()">Sortiraj <span class="icon">&#8595;</span></button>
+      <div *ngIf="showSortOptions" class="sort-dropdown">
+        <button class="dropdown-item" (click)="sortByGenre()">Po žanrovima</button>
+        <button class="dropdown-item" (click)="sortByReleaseDate()">Po datumu izlaska</button>
+      </div>
     </div>
+
+    <!-- Kalendar ostaje na desnoj strani -->
     <div class="calendar-container">
       <label for="releaseDate">Izaberi datum izlaska:</label>
       <input type="date" id="releaseDate" (change)="filterByDate($event)" />
@@ -61,4 +66,4 @@
       </div>
     </div>
   </div>
-  
+</div>

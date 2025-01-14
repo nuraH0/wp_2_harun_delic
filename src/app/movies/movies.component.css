@@ -30,6 +30,7 @@ body {
   width: 300px;
 }
 
+
 /* Movie Cards */
 .movie-cards {
   display: grid;
@@ -130,10 +131,6 @@ button.add-movie::before {
   margin-right: 8px;
 }
 
-button.add-movie:focus {
-  outline: none;
-  box-shadow: 0 0 5px rgba(72, 181, 97, 0.7);
-}
 
 /* Responsive Adjustments */
 @media screen and (max-width: 768px) {

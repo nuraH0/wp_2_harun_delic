@@ -1,18 +1,17 @@
-<div>
-    <h2>Register</h2>
-    <form (ngSubmit)="register()">
-      <label for="username">Username:</label>
-      <input id="username" [(ngModel)]="username" name="username" required>
-      <br>
-      <label for="password">Password:</label>
-      <input id="password" [(ngModel)]="password" name="password" type="password" required>
-      <br>
-      <label for="email">Email:</label>
-      <input id="email" [(ngModel)]="email" name="email" type="email" required>
-      <br>
-      <button type="submit">Register</button>
-    </form>
-    <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
-    <p>Already have an account? <button (click)="goToLogin()">Login</button></p>
-  </div>
-  
+<div class="login-container">
+  <h2>Register</h2>
+  <form (ngSubmit)="register()">
+    <label for="username">Username:</label>
+    <input id="username" [(ngModel)]="username" name="username" placeholder="Your username" required>
+    <br>
+    <label for="email">Email:</label>
+    <input id="email" [(ngModel)]="email" name="email" placeholder="Your email" type="email" required>
+    <br>
+    <label for="password">Password:</label>
+    <input id="password" [(ngModel)]="password" name="password" type="password" placeholder="Your password" required>
+    <br>
+    <button type="submit">Register</button>
+  </form>
+  <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+  <p>Already have an account? <a (click)="goToLogin()" style="color: #0288d1; text-decoration: none; cursor: pointer;">Login</a></p>
+</div>

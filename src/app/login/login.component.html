@@ -1,14 +1,14 @@
-<div>
+<div class="login-container">
   <h2>Login</h2>
   <form (ngSubmit)="login()">
     <label for="username">Username:</label>
-    <input id="username" [(ngModel)]="username" name="username" required>
+    <input id="username" [(ngModel)]="username" name="username" placeholder="Your username" required>
     <br>
     <label for="password">Password:</label>
-    <input id="password" [(ngModel)]="password" name="password" type="password" required>
+    <input id="password" [(ngModel)]="password" name="password" type="password" placeholder="Your password" required>
     <br>
     <button type="submit">Login</button>
   </form>
   <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
-  <p>Nemate račun? <button (click)="goToRegister()">Registrujte se</button></p>
+  <p>Nemate račun? <a (click)="goToRegister()" style="color: #0288d1; text-decoration: none; cursor: pointer;">Registrujte se</a></p>
 </div>
