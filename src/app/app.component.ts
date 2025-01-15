@@ -28,6 +28,6 @@ export class AppComponent {
   }
 
   isLoggedIn() {
-    return localStorage.getItem('isLoggedIn') === 'true';
+    return localStorage.getItem('isLoggedIn') === 'true';  // Provjera statusa prijave
   }
 }

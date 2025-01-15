@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
+import { MoviesComponent } from '../movies/movies.component'; // Uvoz MoviesComponent-a
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService, 
+    private router: Router, 
+  ) {}
 
   logout() {
     this.authService.logout(); 
@@ -22,3 +26,5 @@ export class NavbarComponent {
     return this.authService.isLoggedIn(); 
   }
 }
+
+

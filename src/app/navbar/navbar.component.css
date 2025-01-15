@@ -1,43 +1,46 @@
 .navbar {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    background-color: #0288d1;
-    color: black;
-    padding: 14px;
-    margin: 0;
-  }
-  
-  .navbar li {
-    margin-right: 20px;
-  }
-  
-  .navbar a, .navbar button {
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    background-color: transparent;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .navbar a:hover, .navbar button:hover {
-    background-color: #1565c0;
-    transform: scale(1.05);
-  }
-  
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  background-color: rgba(173, 216, 230, 0.8); /* Nježna plava boja s prozirnošću */
+  backdrop-filter: blur(5px); /* Zamućenje pozadine */
+  color: black;
+  padding: 14px 20px;
+  margin: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Blagi sjenkasti efekt */
+  border-radius: 8px; /* Lagano zaobljenje ivica */
+}
+
+.navbar li {
+  margin-right: 20px;
+}
+
+.navbar a,
+.navbar button {
+  color: #333; /* Tamnija nijansa za tekst */
+  text-decoration: none;
+  padding: 10px 15px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar button:hover {
+  background-color: rgba(135, 206, 250, 0.7); /* Svjetlija plava kada se pređe mišem */
+  transform: scale(1.05);
+}
 
 .navbar button {
-  background-color: #0288d1; 
+  background-color: rgba(173, 216, 230, 0.8); /* Prozirna plava za dugme */
 }
 
 .navbar button:hover {
-  background-color: #0277bd; 
+  background-color: rgba(135, 206, 250, 0.7); /* Svjetlija plava za dugme */
 }
-
 
 @media (max-width: 768px) {
   .navbar {

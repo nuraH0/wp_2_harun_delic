@@ -1,11 +1,8 @@
-/* Global Styles */
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
-  color: #333;
 }
 
 /* Centered Text */
@@ -26,10 +23,9 @@ body {
   padding: 10px;
   font-size: 16px;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   width: 300px;
 }
-
 
 /* Movie Cards */
 .movie-cards {
@@ -40,17 +36,18 @@ body {
 }
 
 .movie-card {
-  border: 1px solid #a3c9f1;
+  border: 1px solid #0d78eb;
   padding: 16px;
   border-radius: 8px;
   background-color: #e6f2ff;
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
+  text-align: center;
 }
 
 .movie-card:hover {
   transform: scale(1.05);
-  background-color: #cfe9fc;
+  background-color: #a8d6f7;
 }
 
 .movie-card h3 {
@@ -64,8 +61,154 @@ body {
   color: #333;
 }
 
-/* Sort Options & Calendar Container */
-.sort-options, .calendar-container {
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+.movie-card button {
+  color: #28a745;
+  background: none;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.movie-card button:hover {
+  color: #036d03;
+}
+
+/* Sort Options */
+.sort-options-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.sort-options {
+  position: relative;
+}
+
+.sort-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.sort-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.sort-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.dropdown-item {
+  padding: 10px;
+  background-color: white;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+/* Calendar Input */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-container label {
+  font-size: 1.1em;
+  color: #4CAF50;
+  margin-bottom: 8px;
+}
+
+.calendar-container input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  width: 200px;
+  margin-top: 5px;
+}
+
+/* Cart */
+.cart-content {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 500px;
+  margin: 20px auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart-content h3 {
+  font-size: 1.8em;
+  color: #4a90e2;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.cart-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-content ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 1.1em;
+}
+
+.cart-content ul li button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart-content ul li button:hover {
+  background-color: #cc0000;
+}
+
+.cart-content strong {
+  display: block;
+  text-align: center;
+  font-size: 1.2em;
+  color: #333;
   margin-top: 20px;
 }
 
@@ -103,7 +246,6 @@ body {
   }
 }
 
-/* Buttons */
 button {
   cursor: pointer;
 }
@@ -131,8 +273,7 @@ button.add-movie::before {
   margin-right: 8px;
 }
 
-
-/* Responsive Adjustments */
+/* Media Queries */
 @media screen and (max-width: 768px) {
   .movie-cards {
     grid-template-columns: repeat(2, 1fr);
@@ -140,6 +281,15 @@ button.add-movie::before {
 
   .search-bar input {
     width: 90%;
+  }
+
+  .sort-options-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .calendar-container input {
+    width: 100%;
   }
 }
 
@@ -151,4 +301,28 @@ button.add-movie::before {
   .modal-content {
     padding: 30px;
   }
+}
+
+/* Cart Button */
+.cart-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.cart-button i {
+  font-size: 1.4em;
+}
+
+.cart-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
 }
