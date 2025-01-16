@@ -1,3 +1,4 @@
+/* Defaultni (light) stil */
 body {
   font-family: Arial, sans-serif;
   background-color: #70c3e4;
@@ -8,11 +9,43 @@ body {
   align-items: center;
   text-align: center;
   margin: 0;
-  background-image: url('assets/pozadina.jpg');
-  background-size: cover; 
-  background-position: center; 
+  background-image: url('assets/pozadina2.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
+/* Dark mode stil */
+body.dark-mode {
+  background-color: #121212; /* Tamna pozadina */
+  color: white; /* Svijetla boja teksta */
+  background-image: none; /* Uklanja pozadinsku sliku u dark modu */
+}
+
+/* Stilovi za tekst i dugmadi u tamnom modu */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode p {
+  color: white; /* Svijetla boja teksta */
+}
+
+body.dark-mode button {
+  background-color: #333; /* Tamna pozadina za dugmadi */
+  color: white; /* Svijetli tekst na dugmadi */
+  border: 1px solid #555; /* Tamna bordura dugmadi */
+}
+
+body.dark-mode a {
+  color: #66c0f4; /* Svijetla boja linkova u tamnom modu */
+}
+
+body.dark-mode footer {
+  background-color: #333; /* Tamna pozadina za footer */
+  color: white; /* Svijetli tekst u footeru */
+}
+
+/* Osnovni stilovi za cijeli body */
 html, body {
   height: 70%;
 }
@@ -21,4 +54,69 @@ footer p {
   margin: 0;
   font-size: 14px;
 }
+
+html, body {
+  height: 30%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Stil za toggle switch */
+.toggle-container {
+  position: fixed;
+  top: 80px;
+  right: 40px;
+  z-index: 1000;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4f86f7; /* Plava boja kada je uključen dark mode */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px); /* Pomak kuglice kada je uključen dark mode */
+}
+
+
+
 

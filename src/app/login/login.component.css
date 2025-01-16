@@ -37,7 +37,7 @@ h1 {
   max-width: 400px;
   border: 2px solid #4f86f7;  /* Plavi okvir oko forme */
   box-sizing: border-box;
-  margin-top: 280px; /* Razmak između header-a i forme */
+  margin-top: 200px; /* Razmak između header-a i forme */
 }
 
 /* Stilovi za naslov */

@@ -13,3 +13,20 @@ nav {
     color: #ddd;
   }
   
+  button {
+    position: fixed;      /* Ovdje koristiš fixed pozicioniranje */
+    top: 70px;            /* Postavlja dugme 10px od vrha */
+    right: 10px;          /* Postavlja dugme 10px od desnog ruba */
+    padding: 10px 20px;
+    background-color: #1372ca;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;        /* Povećava prioritet prikaza dugmeta na stranici */
+  }
+  
+  button:hover {
+    background-color: #105b89;
+  }
+  

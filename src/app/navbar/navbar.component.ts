@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
-import { MoviesComponent } from '../movies/movies.component'; // Uvoz MoviesComponent-a
 
 @Component({
   selector: 'app-navbar',
@@ -12,10 +11,18 @@ import { MoviesComponent } from '../movies/movies.component'; // Uvoz MoviesComp
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
+  isMoviesPage: boolean = false;
+
   constructor(
     private authService: AuthService, 
     private router: Router, 
-  ) {}
+    private activatedRoute: ActivatedRoute
+  ) {
+    // Provera da li je trenutna stranica "movies"
+    this.router.events.subscribe(() => {
+      this.isMoviesPage = this.router.url.includes('movies');
+    });
+  }
 
   logout() {
     this.authService.logout(); 
@@ -26,5 +33,3 @@ export class NavbarComponent {
     return this.authService.isLoggedIn(); 
   }
 }
-
-

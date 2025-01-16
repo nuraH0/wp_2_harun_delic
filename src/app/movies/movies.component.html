@@ -1,12 +1,17 @@
 <div *ngIf="authService.isLoggedIn()">
   <h1 class="centered-text">CinemaMax</h1>
 
-  <!-- Dugme za karticu sa ikonom -->
-  <button (click)="toggleCart()" class="cart-button">
-    <i class="fas fa-shopping-cart"></i> Korpa ({{ cart.length }})
-  </button>
+  <div id="loading-screen">
+    <div class="loader"></div>
+  </div>
 
-  <!-- Korpa će se prikazivati samo kada je dugme kliknuto -->
+  <!-- Dugme za karticu sa ikonom -->
+<button (click)="toggleCart()" class="cart-button">
+  <i class="fas fa-shopping-cart"></i> <!-- Ikona korpe -->
+  <span class="button-text">Korpa ({{ cart.length }})</span>
+</button>
+
+
   <div *ngIf="isCartVisible" class="cart-content">
     <h3>Korpa</h3>
     <ul>
@@ -23,18 +28,23 @@
   <div class="search-bar">
     <input type="text" [(ngModel)]="searchQuery" (input)="filterMoviesByTitle()" placeholder="Pretraži filmove po naslovu" />
   </div>
+  
 
   <div class="sort-options-container">
+    <!-- Sortiranje dugme sa ikonom -->
     <div class="sort-options">
       <button class="sort-button" (click)="toggleSortOptions()">
         <span class="icon">&#8595;</span> Sortiraj
       </button>
+      
+      <!-- Dropdown sa opcijama za sortiranje -->
       <div *ngIf="showSortOptions" class="sort-dropdown">
         <button class="dropdown-item" (click)="sortByGenre()">Po žanrovima</button>
         <button class="dropdown-item" (click)="sortByReleaseDate()">Po datumu izlaska</button>
       </div>
     </div>
   
+    <!-- Input za filtriranje filmova prema datumu -->
     <div class="calendar-container">
       <label for="releaseDate">Izaberi datum izlaska:</label>
       <input type="date" id="releaseDate" (change)="filterByDate($event)" />
@@ -42,15 +52,37 @@
   </div>
   
 
-  <button *ngIf="authService.isAdmin()" class="add-movie" (click)="openModal()">Dodaj film</button>
+  <button *ngIf="authService.isAdmin()" class="add-movie" (click)="openModal()">+ Dodaj film</button>
 
-  <div *ngIf="selectedMovie" class="movie-card">
+  <div *ngIf="selectedMovie" class="movie-card-detail">
     <h3>{{ selectedMovie.title }}</h3>
-    <p><strong>Žanr:</strong> {{ selectedMovie.genre }}</p>
-    <p>{{ selectedMovie.description }}</p>
-    <p><strong>Datum izlaska:</strong> {{ selectedMovie.releaseDate }}</p>
-    <button (click)="toggleDescription(selectedMovie)">Izađi iz pregleda</button>
+    
+    <div class="info-item">
+      <i class="fas fa-film"></i> <strong>Žanr:</strong> {{ selectedMovie.genre }}
+    </div>
+    
+    <div class="info-item">
+      <i class="fas fa-calendar"></i> <strong>Datum izlaska:</strong> {{ selectedMovie.releaseDate }}
+    </div>
+  
+    <div class="info-item">
+      <i class="fas fa-pen"></i> <strong>Opis:</strong> <span>📜</span> {{ selectedMovie.description }}
+    </div>
+  
+    <div class="info-item">
+      <i class="fas fa-star"></i> <strong>Ocjena:</strong> <span>⭐</span> {{ selectedMovie.rating }} / 10
+    </div>
+    
+    <div class="comments-section">
+      <h4>Komentari</h4>
+      <div *ngFor="let comment of selectedMovie.comments">
+        <p><strong>{{ comment.name }}:</strong> {{ comment.text }}</p>
+        <button (click)="selectedMovie = null" class="exit-view-button">Izađi iz pregleda</button>
+      </div>
+    </div>
   </div>
+  
+  
 
   <div *ngIf="!selectedMovie" class="movie-cards">
     <div *ngFor="let movie of filteredMovies" class="movie-card">
@@ -90,6 +122,10 @@
         <label for="imageUrl">URL slike:</label>
         <input type="text" [(ngModel)]="newMovie.imageUrl" id="imageUrl" placeholder="Unesite URL slike" />
       </div>
+      <div *ngIf="isFormIncomplete" class="alert alert-danger">
+        <i class="fas fa-exclamation-circle"></i> 🚨 Molimo vas da popunite sva polja prije dodavanja filma. 🚨
+      </div>
+      <p></p>
       <div class="button-group">
         <button (click)="addMovie()">Dodaj</button>
         <button (click)="closeModal()">Zatvori</button>

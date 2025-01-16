@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 
 interface Movie {
   title: string;
-  description: string;
   genre: string;
   releaseDate: string;
-  showDescription: boolean;
+  description: string;
   imageUrl: string;
+  showDescription: boolean;
   price: number;
+  rating: number;
+  comments: { name: string, text: string }[]; 
 }
 
 @Component({
@@ -23,8 +25,11 @@ interface Movie {
 export class MoviesComponent {
 
   cart: Movie[] = [];
-
+  isFormIncomplete = false;
   isCartVisible = false;
+  movieAddedMessage: string | null = null;
+  showPopup: boolean = false;
+
 
   
   movies: Movie[] = [
@@ -35,7 +40,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-23', 
       showDescription: false, 
       imageUrl: 'https://m.media-amazon.com/images/I/51NiGlapXlL._AC_.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 9.3,
+      comments: [{ name: 'John Doe', text: 'A timeless classic!' }]
     },
     { 
       title: 'The Godfather', 
@@ -44,7 +51,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-24', 
       showDescription: false, 
       imageUrl: 'https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 9.2,
+      comments: [{ name: 'Jane Smith', text: 'A masterpiece in cinema!' }]
     },
     { 
       title: 'The Dark Knight', 
@@ -53,7 +62,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-18', 
       showDescription: false, 
       imageUrl: 'https://upload.wikimedia.org/wikipedia/en/8/83/Dark_knight_rises_poster.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 9.0,
+      comments: [{ name: 'Alice Brown', text: 'The best Batman movie!' }]
     },
     { 
       title: 'Forrest Gump', 
@@ -62,7 +73,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-06', 
       showDescription: false, 
       imageUrl: 'https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.8,
+      comments: [{ name: 'Bob White', text: 'Incredibly emotional!' }]
     },
     { 
       title: 'Inception', 
@@ -71,7 +84,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-16', 
       showDescription: false, 
       imageUrl: 'https://play-lh.googleusercontent.com/buKf27Hxendp3tLNpNtP3E-amP0o4yYV-SGKyS2u-Y3GdGRTyfNCIT5WAVs2OudOz6so5K1jtYdAUKI9nw8=w240-h480-rw',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.8,
+      comments: [{ name: 'David Green', text: 'Mind-bending and brilliant!' }]
     },
     { 
       title: 'The Matrix', 
@@ -80,7 +95,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-31', 
       showDescription: false, 
       imageUrl: 'https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.7,
+      comments: [{ name: 'Sarah Clark', text: 'A revolutionary film!' }]
     },
     { 
       title: 'The Lion King', 
@@ -89,7 +106,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-24', 
       showDescription: false, 
       imageUrl: 'https://preview.redd.it/official-30th-anniversary-poster-for-the-lion-king-v0-rrb3jwql5z4d1.jpeg?width=640&crop=smart&auto=webp&s=90b2e152e73f072169c9f0049d25ed86962c58db',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.5,
+      comments: [{ name: 'Emma Davis', text: 'A beautiful animated classic!' }]
     },
     { 
       title: 'Schindler\'s List', 
@@ -98,7 +117,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-15', 
       showDescription: false, 
       imageUrl: 'https://m.media-amazon.com/images/I/81+PRmABYGL._AC_SY300_SX300_.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 9.0,
+      comments: [{ name: 'Michael Harris', text: 'A heartbreaking story of humanity.' }]
     },
     { 
       title: 'The Lord of the Rings: The Return of the King', 
@@ -107,7 +128,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-17', 
       showDescription: false, 
       imageUrl: 'https://m.media-amazon.com/images/M/MV5BMTZkMjBjNWMtZGI5OC00MGU0LTk4ZTItODg2NWM3NTVmNWQ4XkEyXkFqcGc@._V1_.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.9,
+      comments: [{ name: 'James Allen', text: 'Epic finale to a legendary trilogy!' }]
     },
     { 
       title: 'Fight Club', 
@@ -116,7 +139,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-15', 
       showDescription: false, 
       imageUrl: 'https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.8,
+      comments: [{ name: 'Linda Carter', text: 'A dark and thought-provoking film!' }]
     },
     { 
       title: 'Pulp Fiction', 
@@ -125,7 +150,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-14', 
       showDescription: false, 
       imageUrl: 'https://m.media-amazon.com/images/I/81UTs3sC5hL._AC_UF894,1000_QL80_.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.9,
+      comments: [{ name: 'Chris Martin', text: 'A cinematic masterpiece!' }]
     },
     { 
       title: 'The Prestige', 
@@ -134,7 +161,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-20', 
       showDescription: false, 
       imageUrl: 'https://upload.wikimedia.org/wikipedia/en/d/d2/Prestige_poster.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.5,
+      comments: [{ name: 'William Turner', text: 'A brilliant film with a shocking twist!' }]
     },
     { 
       title: 'The Departed', 
@@ -143,7 +172,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-06', 
       showDescription: false, 
       imageUrl: 'https://resizing.flixster.com/SRR1Y1vmMEDjfTaWUbad4ue3WT8=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p162564_p_v8_ag.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.5,
+      comments: [{ name: 'Nancy Wilson', text: 'A gripping thriller with top-notch performances.' }]
     },
     { 
       title: 'Goodfellas', 
@@ -152,7 +183,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-19', 
       showDescription: false, 
       imageUrl: 'https://resizing.flixster.com/L2rTMze6IaTIK7PoxWwv9D2wcIs=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p12720_v_v13_bc.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.7,
+      comments: [{ name: 'Karen Lee', text: 'A fantastic gangster film with superb acting.' }]
     },
     { 
       title: 'The Green Mile', 
@@ -161,7 +194,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-10', 
       showDescription: false, 
       imageUrl: 'https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781501192265/the-green-mile-9781501192265_lg.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.6,
+      comments: [{ name: 'Megan King', text: 'An emotional and touching story.' }]
     },
     { 
       title: 'Interstellar', 
@@ -170,7 +205,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-07', 
       showDescription: false, 
       imageUrl: 'https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.6,
+      comments: [{ name: 'Matthew Scott', text: 'A visually stunning and thought-provoking film.' }]
     },
     { 
       title: 'The Wolf of Wall Street', 
@@ -179,7 +216,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-25', 
       showDescription: false, 
       imageUrl: 'https://images.squarespace-cdn.com/content/v1/50a838b5e4b0d63ce68736ac/1389571528840-4KN1QLQS3HKF1ZTLTR2R/the_wolf_of_wall_street-620x918.jpg?format=1000w',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.2,
+      comments: [{ name: 'Samantha Johnson', text: 'A wild ride through greed and excess!' }]
     },
     { 
       title: 'Se7en', 
@@ -188,7 +227,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-22', 
       showDescription: false, 
       imageUrl: 'https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/se7en_2.png',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.6,
+      comments: [{ name: 'Olivia Harris', text: 'A chilling and unforgettable thriller.' }]
     },
     { 
       title: 'Gladiator', 
@@ -197,7 +238,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-05', 
       showDescription: false, 
       imageUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Gladiator_II_%282024%29_poster.jpg/220px-Gladiator_II_%282024%29_poster.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.5,
+      comments: [{ name: 'Luke Turner', text: 'A powerful and epic tale of vengeance.' }]
     },
     { 
       title: 'City of God', 
@@ -206,7 +249,9 @@ export class MoviesComponent {
       releaseDate: '2024-12-08', 
       showDescription: false, 
       imageUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/10/CidadedeDeus.jpg/220px-CidadedeDeus.jpg',
-      price: this.getRandomPrice()
+      price: this.getRandomPrice(),
+      rating: 8.6,
+      comments: [{ name: 'George Walker', text: 'A gripping and raw depiction of life in the slums.' }]
     }
   ];
   
@@ -221,16 +266,33 @@ export class MoviesComponent {
 
   constructor(public authService: AuthService) {}
 
+
+  // Dodavanje komentara filmu
+addComment(movie: Movie, commentText: string) {
+  if (!commentText) return;
+
+  const newComment = { name: 'Anonymous', text: commentText };
+  movie.comments.push(newComment);
+  alert('Komentar je uspešno dodat.');
+}
+
+
   // Funkcija za random cenu između 10 i 50
   getRandomPrice() {
     return Math.floor(Math.random() * (50 - 10 + 1)) + 10;
   }
 
-  // Dodavanje filma u korpu
   addToCart(movie: Movie) {
     this.cart.push(movie);  // Dodajemo film u korpu
     this.totalAmount += movie.price;  // Ažuriramo ukupnu cenu
+    this.showPopup = true;  // Prikazujemo pop-up obavijest
+    
+    // Sakrij pop-up nakon 3 sekunde
+    setTimeout(() => {
+      this.showPopup = false;
+    }, 700);
   }
+  
 
   // Uklanjanje filma iz korpe
   removeFromCart(movie: Movie) {
@@ -287,7 +349,6 @@ export class MoviesComponent {
     this.showSortOptions = !this.showSortOptions;
   }
 
-  // Brisanje filma iz liste
   removeMovie(movie: any): void {
     const confirmed = window.confirm(`Da li ste sigurni da želite obrisati film "${movie.title}"?`);
     if (confirmed) {
@@ -309,12 +370,25 @@ export class MoviesComponent {
 
   
   addMovie() {
-    this.movies.push({ ...this.newMovie, showDescription: false, price: this.getRandomPrice() });
+    // Proverite da li su svi podaci popunjeni
+    if (!this.newMovie.title || !this.newMovie.genre || !this.newMovie.releaseDate || !this.newMovie.description || !this.newMovie.imageUrl) {
+      this.isFormIncomplete = true;  // Postavite isFormIncomplete na true ako neka polja nisu popunjena
+      return;
+    }
+  
+    // Ako su sva polja popunjena, dodajemo film
+    this.movies.push({
+      ...this.newMovie, 
+      showDescription: false, 
+      price: this.getRandomPrice(),
+      rating: 0,  // Dodajemo podrazumevanu vrednost za rating
+      comments: []  // Dodajemo prazan niz za komentare
+    });
     this.filteredMovies = [...this.movies];  
     this.closeModal();
     alert(`Film "${this.newMovie.title}" je uspješno dodan.`);
   }
-
+  
 
   toggleCart() {
     this.isCartVisible = !this.isCartVisible;

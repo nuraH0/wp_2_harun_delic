@@ -7,6 +7,7 @@ import { RegisterComponent } from './app/register/register.component';
 import { NavbarComponent } from './app/navbar/navbar.component';  // Dodaj NavbarComponent
 import { authGuard } from './app/auth.guard';
 import { FormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -18,6 +19,6 @@ bootstrapApplication(AppComponent, {
       { path: '**', redirectTo: 'login' }
     ]),
     NavbarComponent,  // Dodaj NavbarComponent ovde
-    FormsModule
+    FormsModule, provideAnimationsAsync()
   ],
 });
